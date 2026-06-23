@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerTitle = document.getElementById('header-title');
     const headerStatus = document.getElementById('header-status');
     const avatar = document.querySelector('.avatar');
+    
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.querySelector('.sidebar');
 
     let currentMode = 0;
 
@@ -225,5 +228,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function formatText(text) {
         // Simple formatting to handle newlines
         return text.replace(/\n/g, '<br>');
+    }
+
+    // Mobile Sidebar Toggle
+    if (mobileMenuBtn && sidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target) && sidebar.classList.contains('show')) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Close sidebar when a mood is selected on mobile
+        moodBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('show');
+                }
+            });
+        });
     }
 });
