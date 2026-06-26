@@ -14,7 +14,7 @@
     /* Theme Default (Cosmo Buddy) */
 body.theme-default {
     --bg-color: #1a0b2e;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(26, 11, 46, 0.75);
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --accent-color: #bb86fc;
@@ -26,7 +26,7 @@ body.theme-default {
 /* Theme Angry (Grumpy Alien) */
 body.theme-angry {
     --bg-color: #2e0b11;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(46, 11, 17, 0.75);
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --accent-color: #ff5252;
@@ -38,7 +38,7 @@ body.theme-angry {
 /* Theme Funny (Goofy Bot) */
 body.theme-funny {
     --bg-color: #0d233a;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(13, 35, 58, 0.75);
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --accent-color: #00e5ff;
@@ -50,7 +50,7 @@ body.theme-funny {
 /* Theme Sad (Sad Moon) */
 body.theme-sad {
     --bg-color: #0a0a0a;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(10, 10, 10, 0.75);
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --accent-color: #64b5f6;
@@ -83,6 +83,15 @@ body {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Foreground Effects for Emojis */
+.foreground-effects {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 10;
     overflow: hidden;
     pointer-events: none;
 }
@@ -150,16 +159,19 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(16px);
     transition: all 0.3s ease;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 280px;
+    width: 260px;
+    padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    padding: var(--spacing-lg);
+}
+
+.brand, .mood-selector, .action-btn {
+    z-index: 20;
 }
 
 .brand {
@@ -258,8 +270,14 @@ body {
 }
 
 .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: var(--spacing-lg);
-    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: var(--spacing-md);
+    z-index: 20;
 }
 
 .current-persona {
@@ -302,12 +320,14 @@ body {
 /* Messages */
 .chat-messages {
     flex: 1;
-    padding: var(--spacing-lg);
     overflow-y: auto;
+    padding: var(--spacing-lg);
+    padding-right: var(--spacing-sm);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
     scroll-behavior: smooth;
+    z-index: 20;
 }
 
 .message {
@@ -359,7 +379,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     color: var(--text-primary);
-    backdrop-filter: blur(8px);
 }
 
 .bot-message .message-content {
@@ -398,7 +417,9 @@ body {
 /* Input Area */
 .chat-input-container {
     padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
     border-top: 1px solid var(--glass-border);
+    z-index: 20;
 }
 
 #chat-form {
