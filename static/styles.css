@@ -1,6 +1,6 @@
 :root {
     /* Base Variables */
-    --font-primary: 'Fredoka', sans-serif;
+    --font-primary: 'Orbitron', sans-serif;
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -11,49 +11,52 @@
     --spacing-lg: 24px;
     --spacing-xl: 32px;
     
-    /* Theme Default (Sensei) */
-    --bg-color: #fff0f5;
-    --text-primary: #4a4a4a;
-    --text-secondary: #7a7a7a;
-    --accent-color: #ff99c8;
-    --accent-hover: #ff7aa8;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --user-msg-bg: #ff99c8;
-    --bot-msg-bg: #ffffff;
+    /* Theme Default (Mainframe) */
+body.theme-default {
+    --bg-color: #030712;
+    --glass-bg: rgba(10, 15, 30, 0.85);
+    --text-primary: #00f0ff;
+    --text-secondary: #008f99;
+    --accent-color: #00f0ff;
+    --accent-hover: #00c0cc;
+    --user-msg-bg: rgba(0, 240, 255, 0.2);
+    --bot-msg-bg: rgba(0, 50, 70, 0.5);
 }
 
-/* Theme Angry (Tsundere) */
+/* Theme Angry (Sentinel) */
 body.theme-angry {
-    --bg-color: #ffe4e1;
-    --accent-color: #ff6b6b;
-    --accent-hover: #fa5252;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --user-msg-bg: #ff6b6b;
-    --bot-msg-bg: #ffffff;
+    --bg-color: #120303;
+    --glass-bg: rgba(30, 10, 10, 0.85);
+    --text-primary: #ff003c;
+    --text-secondary: #990024;
+    --accent-color: #ff003c;
+    --accent-hover: #cc0030;
+    --user-msg-bg: rgba(255, 0, 60, 0.2);
+    --bot-msg-bg: rgba(70, 0, 0, 0.5);
 }
 
-/* Theme Funny (Chibi) */
+/* Theme Funny (Drone) */
 body.theme-funny {
-    --bg-color: #fffacd;
-    --accent-color: #feca57;
-    --accent-hover: #ff9f43;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --user-msg-bg: #feca57;
-    --bot-msg-bg: #ffffff;
+    --bg-color: #121003;
+    --glass-bg: rgba(30, 25, 10, 0.85);
+    --text-primary: #fcee0a;
+    --text-secondary: #999006;
+    --accent-color: #fcee0a;
+    --accent-hover: #c9bc08;
+    --user-msg-bg: rgba(252, 238, 10, 0.2);
+    --bot-msg-bg: rgba(70, 65, 0, 0.5);
 }
 
-/* Theme Sad (Gloomy) */
+/* Theme Sad (Rover) */
 body.theme-sad {
-    --bg-color: #f0f8ff;
-    --accent-color: #54a0ff;
-    --accent-hover: #2e86de;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --user-msg-bg: #54a0ff;
-    --bot-msg-bg: #ffffff;
+    --bg-color: #020617;
+    --glass-bg: rgba(5, 15, 25, 0.85);
+    --text-primary: #3b82f6;
+    --text-secondary: #1e40af;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --user-msg-bg: rgba(59, 130, 246, 0.2);
+    --bot-msg-bg: rgba(10, 30, 60, 0.5);
 }
 
 * {
@@ -73,7 +76,7 @@ body {
     position: relative;
 }
 
-/* Background Effects: Falling Sakura */
+/* Background Effects: Deep Space Stars */
 .background-effects {
     position: fixed;
     top: 0;
@@ -83,30 +86,28 @@ body {
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
+    background: radial-gradient(circle at center, transparent, #000);
 }
 
-.sakura-petal {
+.star {
     position: absolute;
-    background: var(--accent-color);
-    border-radius: 10px 1px;
-    width: 15px;
-    height: 15px;
-    opacity: 0.6;
-    animation: fall linear infinite;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle infinite alternate ease-in-out;
 }
 
-.p1 { left: 10%; animation-duration: 8s; animation-delay: 0s; }
-.p2 { left: 30%; animation-duration: 6s; animation-delay: 2s; }
-.p3 { left: 50%; animation-duration: 9s; animation-delay: 1s; }
-.p4 { left: 70%; animation-duration: 7s; animation-delay: 4s; }
-.p5 { left: 85%; animation-duration: 10s; animation-delay: 0s; }
-.p6 { left: 95%; animation-duration: 6s; animation-delay: 3s; }
+.s1 { width: 2px; height: 2px; left: 10%; top: 20%; animation-duration: 2s; }
+.s2 { width: 3px; height: 3px; left: 30%; top: 50%; animation-duration: 3s; }
+.s3 { width: 1px; height: 1px; left: 50%; top: 80%; animation-duration: 1s; }
+.s4 { width: 2px; height: 2px; left: 70%; top: 30%; animation-duration: 4s; }
+.s5 { width: 3px; height: 3px; left: 85%; top: 60%; animation-duration: 2.5s; }
+.s6 { width: 1px; height: 1px; left: 95%; top: 10%; animation-duration: 1.5s; }
+.s7 { width: 2px; height: 2px; left: 20%; top: 90%; animation-duration: 3.5s; }
+.s8 { width: 4px; height: 4px; left: 60%; top: 15%; animation-duration: 5s; box-shadow: 0 0 5px #fff; }
 
-@keyframes fall {
-    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+@keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
 }
 
 /* Layout */
@@ -122,9 +123,10 @@ body {
 
 .glass-panel {
     background: var(--glass-bg);
-    border: 3px solid var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
@@ -146,13 +148,13 @@ body {
 .logo {
     width: 44px;
     height: 44px;
-    border-radius: var(--radius-sm);
-    background-image: url('/static/images/anime_logo.png');
+    border-radius: 0;
+    background-image: url('/static/images/space_logo.png');
     background-size: cover;
     background-position: center;
-    border: 2px solid var(--accent-color);
-    box-shadow: 2px 2px 0 var(--accent-color);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    transition: all 0.3s ease;
 }
 
 .mood-selector h3 {
@@ -327,12 +329,13 @@ body {
 
 .message-content {
     padding: var(--spacing-md);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     line-height: 1.5;
     font-size: 1rem;
     font-weight: 500;
-    border: 2px solid var(--accent-color);
-    box-shadow: 2px 2px 0 var(--accent-color);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
+    color: #ffffff;
 }
 
 .bot-message .message-content {
@@ -541,17 +544,17 @@ body.theme-sad .bot-message {
 
 body:not([class*="theme-"]) .bot-message .message-avatar,
 body.theme-default .bot-message .message-avatar {
-    background-image: url('/static/images/anime_prof.png');
+    background-image: url('/static/images/space_prof.png');
 }
 
 body.theme-angry .bot-message .message-avatar {
-    background-image: url('/static/images/anime_angry.png');
+    background-image: url('/static/images/space_angry.png');
 }
 
 body.theme-funny .bot-message .message-avatar {
-    background-image: url('/static/images/anime_funny.png');
+    background-image: url('/static/images/space_funny.png');
 }
 
 body.theme-sad .bot-message .message-avatar {
-    background-image: url('/static/images/anime_sad.png');
+    background-image: url('/static/images/space_sad.png');
 }

@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMode = 0;
 
     const personas = {
-        0: { title: "Sensei", status: "Online and ready to teach", theme: "theme-default", icon: "/static/images/anime_prof.png" },
-        1: { title: "Tsundere", status: "It's not like I want to help you...", theme: "theme-angry", icon: "/static/images/anime_angry.png" },
-        2: { title: "Chibi", status: "YAY! Let's have fun! ✨", theme: "theme-funny", icon: "/static/images/anime_funny.png" },
-        3: { title: "Gloomy", status: "Sigh... I'm here if you need me", theme: "theme-sad", icon: "/static/images/anime_sad.png" }
+        0: { title: "Astro Mainframe", status: "System: Nominal", theme: "theme-default", icon: "/static/images/space_prof.png" },
+        1: { title: "Astro Sentinel", status: "Warning: Hostile protocols engaged", theme: "theme-angry", icon: "/static/images/space_angry.png" },
+        2: { title: "Astro Drone", status: "Beep boop! Ready to assist!", theme: "theme-funny", icon: "/static/images/space_funny.png" },
+        3: { title: "Astro Rover", status: "Signal lost... drifting...", theme: "theme-sad", icon: "/static/images/space_sad.png" }
     };
 
     async function loadHistory() {
