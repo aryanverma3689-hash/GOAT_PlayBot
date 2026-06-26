@@ -13,6 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const sidebar = document.querySelector('.sidebar');
 
+    // --- Space Emojis Generator ---
+    const emojis = ['⭐', '🪐', '☄️', '🚀', '👽'];
+    const bgContainer = document.querySelector('.background-effects');
+
+    function spawnEmoji() {
+        if (!bgContainer) return;
+        const emoji = document.createElement('div');
+        emoji.className = 'space-obj';
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        const startLeft = Math.random() * 100;
+        const duration = Math.random() * 15 + 10;
+        const size = Math.random() * 1.5 + 1.5;
+        
+        emoji.style.left = `${startLeft}vw`;
+        emoji.style.fontSize = `${size}rem`;
+        
+        bgContainer.appendChild(emoji);
+        
+        const animation = emoji.animate([
+            { transform: `translateY(-10vh) rotate(0deg)`, opacity: 0 },
+            { transform: `translateY(10vh) rotate(45deg)`, opacity: 0.8, offset: 0.1 },
+            { transform: `translateY(90vh) rotate(315deg)`, opacity: 0.8, offset: 0.9 },
+            { transform: `translateY(110vh) rotate(360deg)`, opacity: 0 }
+        ], {
+            duration: duration * 1000,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+        
+        animation.onfinish = () => {
+            emoji.remove();
+            spawnEmoji();
+        };
+    }
+
+    if (bgContainer) {
+        for (let i = 0; i < 15; i++) {
+            setTimeout(spawnEmoji, Math.random() * 10000);
+        }
+    }
+    // -----------------------------
+
     let currentMode = 0;
 
     const personas = {
