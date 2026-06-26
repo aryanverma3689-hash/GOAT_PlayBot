@@ -15,43 +15,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Space Emojis Generator ---
     const emojis = ['⭐', '🪐', '☄️', '🚀', '👽'];
-    const bgContainer = document.querySelector('.background-effects');
+    const fgContainer = document.getElementById('foreground-effects');
 
-    function spawnEmoji() {
-        if (!bgContainer) return;
+    function spawnEmoji(isInitial = false) {
+        if (!fgContainer) return;
         const emoji = document.createElement('div');
         emoji.className = 'space-obj';
         emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
         
         const startLeft = Math.random() * 100;
-        const duration = Math.random() * 15 + 10;
-        const size = Math.random() * 1.5 + 1.5;
+        const duration = Math.random() * 20 + 20; // 20s to 40s
+        const size = Math.random() * 1.5 + 1.0; // 1.0rem to 2.5rem
+        
+        // Random horizontal drift between -30vw and 30vw
+        const horizontalDrift = (Math.random() - 0.5) * 60; 
         
         emoji.style.left = `${startLeft}vw`;
         emoji.style.fontSize = `${size}rem`;
         
-        bgContainer.appendChild(emoji);
+        fgContainer.appendChild(emoji);
         
+        // Translate3d is used for butter-smooth hardware acceleration
         const animation = emoji.animate([
-            { transform: `translateY(-10vh) rotate(0deg)`, opacity: 0 },
-            { transform: `translateY(10vh) rotate(45deg)`, opacity: 0.8, offset: 0.1 },
-            { transform: `translateY(90vh) rotate(315deg)`, opacity: 0.8, offset: 0.9 },
-            { transform: `translateY(110vh) rotate(360deg)`, opacity: 0 }
+            { transform: `translate3d(0, -10vh, 0) rotate(0deg)`, opacity: 0 },
+            { transform: `translate3d(${horizontalDrift * 0.2}vw, 20vh, 0) rotate(90deg)`, opacity: 0.9, offset: 0.2 },
+            { transform: `translate3d(${horizontalDrift * 0.5}vw, 50vh, 0) rotate(180deg)`, opacity: 0.9, offset: 0.5 },
+            { transform: `translate3d(${horizontalDrift * 0.8}vw, 80vh, 0) rotate(270deg)`, opacity: 0.9, offset: 0.8 },
+            { transform: `translate3d(${horizontalDrift}vw, 110vh, 0) rotate(360deg)`, opacity: 0 }
         ], {
             duration: duration * 1000,
             easing: 'linear',
             fill: 'forwards'
         });
         
+        // If this is the initial page load, instantly fast-forward the animation
+        // to a random point in time so they are perfectly scattered across the screen
+        if (isInitial) {
+            const randomDelay = Math.random() * duration * 1000;
+            animation.currentTime = randomDelay;
+        }
+        
         animation.onfinish = () => {
             emoji.remove();
-            spawnEmoji();
+            spawnEmoji(false); // Spawn a new one normally from the top
         };
     }
 
-    if (bgContainer) {
-        for (let i = 0; i < 15; i++) {
-            setTimeout(spawnEmoji, Math.random() * 10000);
+    if (fgContainer) {
+        // 8 is the perfect number: not sparse, but not a clustered traffic jam
+        for (let i = 0; i < 8; i++) {
+            spawnEmoji(true);
         }
     }
     // -----------------------------
