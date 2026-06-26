@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMode = 0;
 
     const personas = {
-        0: { title: "Astro Mainframe", status: "System: Nominal", theme: "theme-default", icon: "/static/images/space_prof.png" },
-        1: { title: "Astro Sentinel", status: "Warning: Hostile protocols engaged", theme: "theme-angry", icon: "/static/images/space_angry.png" },
-        2: { title: "Astro Drone", status: "Beep boop! Ready to assist!", theme: "theme-funny", icon: "/static/images/space_funny.png" },
-        3: { title: "Astro Rover", status: "Signal lost... drifting...", theme: "theme-sad", icon: "/static/images/space_sad.png" }
+        0: { title: "Cosmo Buddy", status: "Ready for launch! 🚀", theme: "theme-default", icon: "👨‍🚀" },
+        1: { title: "Grumpy Alien", status: "Don't probe me! 😡", theme: "theme-angry", icon: "👾" },
+        2: { title: "Goofy Bot", status: "Beep boop! I like cheese! 🧀", theme: "theme-funny", icon: "🤖" },
+        3: { title: "Sad Moon", status: "Just floating alone... 🌘", theme: "theme-sad", icon: "🪐" }
     };
 
     async function loadHistory() {
@@ -33,9 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.className = persona.theme;
             headerTitle.textContent = persona.title;
             headerStatus.textContent = persona.status;
-            avatar.style.backgroundImage = `url('${persona.icon}')`;
-            avatar.style.backgroundSize = 'cover';
-            avatar.style.backgroundPosition = 'center';
+            if (persona.icon.startsWith('/')) {
+                avatar.style.backgroundImage = `url('${persona.icon}')`;
+                avatar.style.backgroundSize = 'cover';
+                avatar.style.backgroundPosition = 'center';
+                avatar.innerText = "";
+            } else {
+                avatar.style.backgroundImage = "none";
+                avatar.innerText = persona.icon;
+                avatar.style.fontSize = "32px";
+                avatar.style.display = "flex";
+                avatar.style.alignItems = "center";
+                avatar.style.justifyContent = "center";
+            }
             
             // Update mode buttons
             moodBtns.forEach(b => b.classList.remove('active'));
@@ -81,9 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.className = persona.theme;
             headerTitle.textContent = persona.title;
             headerStatus.textContent = persona.status;
-            avatar.style.backgroundImage = `url('${persona.icon}')`;
-            avatar.style.backgroundSize = 'cover';
-            avatar.style.backgroundPosition = 'center';
+            if (persona.icon.startsWith('/')) {
+                avatar.style.backgroundImage = `url('${persona.icon}')`;
+                avatar.style.backgroundSize = 'cover';
+                avatar.style.backgroundPosition = 'center';
+                avatar.innerText = "";
+            } else {
+                avatar.style.backgroundImage = "none";
+                avatar.innerText = persona.icon;
+                avatar.style.fontSize = "32px";
+                avatar.style.display = "flex";
+                avatar.style.alignItems = "center";
+                avatar.style.justifyContent = "center";
+            }
 
             // Optional: Send a visual notification in chat that persona changed
             appendSystemMessage(`Switched to ${persona.title} persona.`);
