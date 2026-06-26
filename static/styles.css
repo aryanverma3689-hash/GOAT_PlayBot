@@ -75,6 +75,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     transition: background-color 0.8s ease;
     position: relative;
@@ -127,6 +128,7 @@ body {
 .app-container {
     display: flex;
     height: 100vh;
+    height: 100dvh;
     padding: var(--spacing-lg);
     gap: var(--spacing-lg);
     max-width: 1400px;
@@ -531,5 +533,9 @@ body.theme-sad .bot-message {
     
     .message {
         max-width: 95%;
+    }
+    
+    .chat-input-container {
+        padding-bottom: 24px; /* Extra padding for mobile bottom bar */
     }
 }
