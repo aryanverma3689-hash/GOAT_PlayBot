@@ -11,57 +11,49 @@
     --spacing-lg: 24px;
     --spacing-xl: 32px;
     
-    /* Default Theme (Professional) */
-    --bg-color: #0f172a;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-color: #3b82f6;
-    --accent-hover: #2563eb;
-    --glass-bg: rgba(30, 41, 59, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --user-msg-bg: linear-gradient(135deg, #3b82f6, #6366f1);
-    --bot-msg-bg: rgba(51, 65, 85, 0.8);
-    --blob-1: #3b82f6;
-    --blob-2: #8b5cf6;
+    /* Theme Default (Sensei) */
+    --bg-color: #fff0f5;
+    --text-primary: #4a4a4a;
+    --text-secondary: #7a7a7a;
+    --accent-color: #ff99c8;
+    --accent-hover: #ff7aa8;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --user-msg-bg: #ff99c8;
+    --bot-msg-bg: #ffffff;
 }
 
-/* Theme: Angry */
+/* Theme Angry (Tsundere) */
 body.theme-angry {
-    --bg-color: #1a0505;
-    --accent-color: #ef4444;
-    --accent-hover: #dc2626;
-    --glass-bg: rgba(69, 10, 10, 0.7);
-    --glass-border: rgba(239, 68, 68, 0.2);
-    --user-msg-bg: linear-gradient(135deg, #ef4444, #b91c1c);
-    --bot-msg-bg: rgba(69, 10, 10, 0.8);
-    --blob-1: #ef4444;
-    --blob-2: #991b1b;
+    --bg-color: #ffe4e1;
+    --accent-color: #ff6b6b;
+    --accent-hover: #fa5252;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --user-msg-bg: #ff6b6b;
+    --bot-msg-bg: #ffffff;
 }
 
-/* Theme: Funny */
+/* Theme Funny (Chibi) */
 body.theme-funny {
-    --bg-color: #1c1917;
-    --accent-color: #f59e0b;
-    --accent-hover: #d97706;
-    --glass-bg: rgba(67, 20, 7, 0.7);
-    --glass-border: rgba(245, 158, 11, 0.2);
-    --user-msg-bg: linear-gradient(135deg, #f59e0b, #fbbf24);
-    --bot-msg-bg: rgba(41, 37, 36, 0.8);
-    --blob-1: #f59e0b;
-    --blob-2: #ec4899;
+    --bg-color: #fffacd;
+    --accent-color: #feca57;
+    --accent-hover: #ff9f43;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --user-msg-bg: #feca57;
+    --bot-msg-bg: #ffffff;
 }
 
-/* Theme: Sad */
+/* Theme Sad (Gloomy) */
 body.theme-sad {
-    --bg-color: #0c121e;
-    --accent-color: #64748b;
-    --accent-hover: #475569;
-    --glass-bg: rgba(15, 23, 42, 0.8);
-    --glass-border: rgba(148, 163, 184, 0.1);
-    --user-msg-bg: linear-gradient(135deg, #475569, #334155);
-    --bot-msg-bg: rgba(30, 41, 59, 0.6);
-    --blob-1: #334155;
-    --blob-2: #1e293b;
+    --bg-color: #f0f8ff;
+    --accent-color: #54a0ff;
+    --accent-hover: #2e86de;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --user-msg-bg: #54a0ff;
+    --bot-msg-bg: #ffffff;
 }
 
 * {
@@ -81,47 +73,40 @@ body {
     position: relative;
 }
 
-/* Background Animations */
+/* Background Effects: Falling Sakura */
 .background-effects {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
     overflow: hidden;
-    z-index: -1;
     pointer-events: none;
 }
 
-.blob {
+.sakura-petal {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.5;
-    animation: float 20s infinite alternate ease-in-out;
-    transition: background-color 0.8s ease;
+    background: var(--accent-color);
+    border-radius: 10px 1px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+    animation: fall linear infinite;
 }
 
-.blob-1 {
-    width: 50vw;
-    height: 50vw;
-    background-color: var(--blob-1);
-    top: -10%;
-    left: -10%;
-}
+.p1 { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+.p2 { left: 30%; animation-duration: 6s; animation-delay: 2s; }
+.p3 { left: 50%; animation-duration: 9s; animation-delay: 1s; }
+.p4 { left: 70%; animation-duration: 7s; animation-delay: 4s; }
+.p5 { left: 85%; animation-duration: 10s; animation-delay: 0s; }
+.p6 { left: 95%; animation-duration: 6s; animation-delay: 3s; }
 
-.blob-2 {
-    width: 40vw;
-    height: 40vw;
-    background-color: var(--blob-2);
-    bottom: -10%;
-    right: -10%;
-    animation-delay: -10s;
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(10%, 10%) scale(1.1); }
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
 /* Layout */
@@ -137,8 +122,8 @@ body {
 
 .glass-panel {
     background: var(--glass-bg);
-    border: 3px solid #000;
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border-radius: var(--radius-lg);
     transition: all 0.3s ease;
 }
@@ -162,11 +147,11 @@ body {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-sm);
-    background-image: url('/static/images/goat_logo.png');
+    background-image: url('/static/images/anime_logo.png');
     background-size: cover;
     background-position: center;
-    border: 2px solid #000;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.8);
+    border: 2px solid var(--accent-color);
+    box-shadow: 2px 2px 0 var(--accent-color);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -346,8 +331,8 @@ body {
     line-height: 1.5;
     font-size: 1rem;
     font-weight: 500;
-    border: 2px solid #000;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--accent-color);
+    box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .bot-message .message-content {
@@ -416,7 +401,7 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 2px solid #000;
+    border: 2px solid var(--accent-color);
     background: var(--accent-color);
     color: white;
     cursor: pointer;
@@ -556,17 +541,17 @@ body.theme-sad .bot-message {
 
 body:not([class*="theme-"]) .bot-message .message-avatar,
 body.theme-default .bot-message .message-avatar {
-    background-image: url('/static/images/goat_professional.png');
+    background-image: url('/static/images/anime_prof.png');
 }
 
 body.theme-angry .bot-message .message-avatar {
-    background-image: url('/static/images/goat_angry.png');
+    background-image: url('/static/images/anime_angry.png');
 }
 
 body.theme-funny .bot-message .message-avatar {
-    background-image: url('/static/images/goat_funny.png');
+    background-image: url('/static/images/anime_funny.png');
 }
 
 body.theme-sad .bot-message .message-avatar {
-    background-image: url('/static/images/goat_sad.png');
+    background-image: url('/static/images/anime_sad.png');
 }

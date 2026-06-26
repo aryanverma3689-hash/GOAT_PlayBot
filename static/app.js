@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMode = 0;
 
     const personas = {
-        0: { title: "Professional GOAT", status: "Online and ready to help", theme: "theme-default", icon: "/static/images/goat_professional.png" },
-        1: { title: "Angry GOAT", status: "Do not test my patience", theme: "theme-angry", icon: "/static/images/goat_angry.png" },
-        2: { title: "Funny GOAT", status: "Ready to crack a joke!", theme: "theme-funny", icon: "/static/images/goat_funny.png" },
-        3: { title: "Sad GOAT", status: "Sigh... I'm here if you need me", theme: "theme-sad", icon: "/static/images/goat_sad.png" }
+        0: { title: "Sensei", status: "Online and ready to teach", theme: "theme-default", icon: "/static/images/anime_prof.png" },
+        1: { title: "Tsundere", status: "It's not like I want to help you...", theme: "theme-angry", icon: "/static/images/anime_angry.png" },
+        2: { title: "Chibi", status: "YAY! Let's have fun! ✨", theme: "theme-funny", icon: "/static/images/anime_funny.png" },
+        3: { title: "Gloomy", status: "Sigh... I'm here if you need me", theme: "theme-sad", icon: "/static/images/anime_sad.png" }
     };
 
     async function loadHistory() {
