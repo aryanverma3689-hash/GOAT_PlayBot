@@ -267,6 +267,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-width: 0;
 }
 
 .chat-header {
@@ -466,6 +467,7 @@ body {
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
 }
 
 #send-btn:hover:not(:disabled) {
@@ -542,6 +544,7 @@ body.theme-sad .bot-message {
     .app-container {
         padding: 0;
         gap: 0;
+        width: 100vw;
     }
     
     .sidebar {
@@ -567,6 +570,7 @@ body.theme-sad .bot-message {
         display: flex;
         align-items: center;
         gap: var(--spacing-md);
+        padding: var(--spacing-md);
     }
     
     .glass-panel {
@@ -575,12 +579,17 @@ body.theme-sad .bot-message {
         border-bottom: 1px solid var(--glass-border);
     }
     
+    .chat-messages {
+        padding: var(--spacing-md);
+    }
+    
     .message {
         max-width: 95%;
     }
     
     .chat-input-container {
-        padding-bottom: 24px; /* Extra padding for mobile bottom bar */
+        padding: var(--spacing-md);
+        padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 16px));
     }
 }
 
